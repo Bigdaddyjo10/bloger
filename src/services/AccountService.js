@@ -4,6 +4,11 @@ import { logger } from '../utils/Logger'
 import { api } from './AxiosService'
 
 class AccountService {
+  async upAccount(accountData) {
+    const res = await api.put('/account', accountData)
+    AppState.account = res.data
+    logger.log(res.data)
+  }
   async getAccount() {
     try {
       const res = await api.get('/account')
